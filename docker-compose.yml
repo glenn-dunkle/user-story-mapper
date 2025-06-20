@@ -1,0 +1,6 @@
+services:
+  userstorymapper:
+    image: userstorymapper
+    build:
+      context: .
+      dockerfile: ./Dockerfile
