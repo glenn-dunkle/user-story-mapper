@@ -2,6 +2,11 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"type": "shell",
+			"label": "ehco project path",
+			"command": "echo /workspaces/${project}",
+		},
+		{
 			"type": "docker-build",
 			"label": "docker-build",
 			"platform": "python",
