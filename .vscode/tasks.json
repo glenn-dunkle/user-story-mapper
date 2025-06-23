@@ -7,25 +7,51 @@
 			"command": "echo /workspaces/${project}",
 		},
 		{
-			"type": "docker-build",
+			"type": "shell",
 			"label": "docker-build",
-			"platform": "python",
-			"dockerBuild": {
-				"tag": "userstorymapper:latest",
-				"dockerfile": "${workspaceFolder}/Dockerfile",
-				"context": "${workspaceFolder}",
-				"pull": true
-			}
+			"command": "docker",
+			"args": [
+				"build",
+				"-t",
+				"userstorymapper:latest",
+				"-f",
+				"${workspaceFolder}/Dockerfile",
+				"${workspaceFolder}"
+			]
 		},
 		{
-			"type": "docker-run",
+			"type": "shell",
 			"label": "docker-run: debug",
 			"dependsOn": [
 				"docker-build"
 			],
-			"python": {
-				"file": "main.py"
-			}
+			"command": "docker",
+			"args": [
+				"run",
+				"--rm",
+				"-p",
+				"8000:8000",
+				"userstorymapper:latest"
+			]
+		},
+		{
+			"type": "shell",
+			"label": "docker-run: app",
+			"dependsOn": [
+				"docker-build"
+			],
+			"command": "docker",
+			"args": [
+				"run",
+				"--rm",
+				"-v",
+				"${workspaceFolder}:/app",
+				"-w",
+				"/app",
+				"-p",
+				"8000:8000",
+				"userstorymapper:latest"
+			]
 		}
 	]
 }

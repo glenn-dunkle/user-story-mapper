@@ -1,0 +1,27 @@
+title = "User Story Mapper Config"
+
+[general]
+LOG_LEVEL = ""
+
+[http]
+HTTP_RETRIES = 3
+HTTP_BACKOFF_FACTOR = 0.5
+HTTP_TIMEOUT = 10
+
+[miro]
+MIRO_API_KEY = "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_mZKI-Up3Z1ahlJ0hfTp0CJwxXGM"
+MIRO_BASE_URL = "https://api.miro.com/v2/boards/"
+MIRO_BOARD_ID = "uXjVIlEZNVI="
+MIRO_HTTP_ACCEPT = "application/json"
+MIRO_HTTP_CONTENT_TYPE = "application/json"
+
+[storiesonboard]
+SOB_API_KEY = ""
+SOB_BASE_URL = ""
+SOB_BOARD_ID = ""
+
+[ai_grouping]
+AI_MODEL_NAME = "all-MiniLM-L6-v2"
+AI_CLUSTERS = 5
+AI_DISTANCE_THRESHOLD = 1.5
+AI_AGGLOMERATIVE_TYPE = "distance"   # 'distance' or 'cluster'
