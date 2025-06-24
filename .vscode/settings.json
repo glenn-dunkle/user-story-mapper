@@ -1,2 +1,11 @@
 {
+    "python.testing.pytestArgs": [ "tests" ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "todohighlight.isEnable": true,
+    "todohighlight.defaultStyle": {
+
+        "color": "#2196f3",
+        "backgroundColor": "#ffeb3b"
+    }
 }

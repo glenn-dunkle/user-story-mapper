@@ -7,11 +7,13 @@
       "settings": {},
       "extensions": [
         "ms-python.python",
-        "ms-python.vscode-pylance"
+        "ms-python.vscode-pylance",
+        "ms-python.requests",
+        "continer-tools.vscode-docker"
       ]
     }
   },
   "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
   "workspaceFolder": "/app",
-  "postCreateCommand": "python main.py"
+  "postCreateCommand": "python -m src.main"
 }
