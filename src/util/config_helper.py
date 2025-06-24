@@ -11,3 +11,4 @@ def load_config(config_file_path="/app/pyproject.toml"):
     with open(config_file_path, 'rb') as f:
         CONFIG.update(toml.load(f))
 
+# TODO add debug print of running config
