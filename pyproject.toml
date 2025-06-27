@@ -1,7 +1,13 @@
 title = "User Story Mapper Config"
 
-[general]
-LOG_LEVEL = ""
+[logging]
+LOG_LEVEL = "DEBUG"   # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+LOG_FOLDER = "logs"
+LOG_FILE_EXT = ".log"   # Include the .
+LOG_ERR_NAME = "user_story_mapper_err"
+LOG_OUT_NAME = "user_story_mapper_out"
+LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 [http]
 HTTP_RETRIES = 3
@@ -11,17 +17,25 @@ HTTP_TIMEOUT = 10
 [miro]
 MIRO_API_KEY = "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_mZKI-Up3Z1ahlJ0hfTp0CJwxXGM"
 MIRO_BASE_URL = "https://api.miro.com/v2/boards/"
-MIRO_BOARD_ID = "uXjVIlEZNVI="
+MIRO_BOARD_ID = "uXjVIj7ivMU="      # "uXjVIlEZNVI="
 MIRO_HTTP_ACCEPT = "application/json"
 MIRO_HTTP_CONTENT_TYPE = "application/json"
+MIRO_PAGE_ITEMS = "50"
 
 [storiesonboard]
 SOB_API_KEY = ""
 SOB_BASE_URL = ""
 SOB_BOARD_ID = ""
 
+[jira]
+JIRA_BASE_URL = "gdunkle.atlassian.net/rest/api/2"
+JIRA_PROJECT_KEY = "DEMO"
+
+
 [ai_grouping]
 AI_MODEL_NAME = "all-MiniLM-L6-v2"
 AI_CLUSTERS = 5
-AI_DISTANCE_THRESHOLD = 1.5
-AI_AGGLOMERATIVE_TYPE = "distance"   # 'distance' or 'cluster'
+AI_DISTANCE_THRESHOLD = 0.7
+AI_AGGLOMERATIVE_TYPE = "distance"   # Options: distance, cluster
+AI_LINKAGE_TYPE = "average"     # Options: ward, average, complete, single
+AI_METRIC_TYPE = "cosine"      # Options: euclidean, manhattan, cosine, precomputed
