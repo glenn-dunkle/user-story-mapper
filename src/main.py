@@ -4,7 +4,7 @@ import logging
 import os
 from src.util import config_helper
 from src.connectors import miro_connector as miro_conn
-from src.connectors import sob_connector as sob_conn
+from src.connectors import jira_connector as jira_conn
 from src.affinity_grouper import affinity_grouper as aff_grouper
 from src.loggers import err_logger
 
@@ -45,11 +45,16 @@ except Exception as e:
     print(f"An error occurred while grouping notes: {e}")
 
 # TODO Connect to the SoB API using the SobConnector class
-sobConn = sob_conn.SobConnector()
+# StoriesOnBoard no longer provides a public API. So we'll try loading the
+# affinity groups in to Jira. Then we can either use Jira or the Jira->SoB connector
+# to use StoriesOnBoard
+
+#TODO: Figure out how to dump the entire error response body
 try:
     if affinity_groups:
-        sob_data = sobConn.postBoard(affinity_groups)
-        print("Successfully connected to StoriesOnBoard board.")
+        jiraConn = jira_conn.JiraConnector()
+        print("Successfully connected to Jira project.")
+        jira_epics = jiraConn.postGroupsToJira(affinity_groups)
 except requests.ConnectionError as e:
     print(f"Connection error: {e}")
 except ValueError as e:

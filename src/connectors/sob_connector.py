@@ -1,8 +1,11 @@
 import uuid
 import json
+import warnings
+from deprecated import deprecated
 from src.util.http_helper import HTTPHelper
 from src.util.config_helper import CONFIG
 
+@deprecated("StoriesOnBoard no longer provides a public API.")
 class SobConnector(HTTPHelper):
     def __init__(self):
         self.uuid = str(uuid.uuid4())
@@ -10,6 +13,8 @@ class SobConnector(HTTPHelper):
         self.api_key = CONFIG["sob"]["SOB_API_KEY"]
         self.base_url = CONFIG["sob"]["SOB_BASE_URL"]
         self.board_id = CONFIG["sob"]["SOB_BOARD_ID"]
+
+        warnings.warn("SobConnector(HTTPHelper) is not viable at this time as StoriesOnBoard does not provide a public API", DeprecationWarning, stacklevel=2)
 
     def getBoard(self, api_key=None, base_url=None, board_id=None):
         api_key = api_key if api_key else self.api_key

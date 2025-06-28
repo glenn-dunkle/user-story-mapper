@@ -37,6 +37,7 @@ class HTTPHelper:
 
         response = requests.post(url, data=data, json=json, headers=headers, timeout=effective_timeout)
         response.raise_for_status()
+        
         return response
 
     @staticmethod

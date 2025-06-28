@@ -28,8 +28,11 @@ SOB_BASE_URL = ""
 SOB_BOARD_ID = ""
 
 [jira]
-JIRA_BASE_URL = "gdunkle.atlassian.net/rest/api/2"
+JIRA_USER = "glenn.dunkle@gmail.com"
+JIRA_API_KEY = "ATATT3xFfGF0ozMMfoB5bNqUxIy7EwnrICaYRVb2bH1_a82z4lyll-eMFccshcrfBbpjWmRhxi8fliU4Sv6kb59xA77HC1E6psFNp4KXGLWj4S0nn_AE3dIdgb12sghTyEe4ts2zdM_QhNYq98M18CMvKi6ioMBu48-b8KNg56HhCWlNSz_wWhQ=12E1D66D"
+JIRA_BASE_URL = "https://gdunkle.atlassian.net/rest/api/2"
 JIRA_PROJECT_KEY = "DEMO"
+JIRA_HTTP_CONTENT_TYPE = "application/json"
 
 
 [ai_grouping]
