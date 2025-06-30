@@ -19,7 +19,8 @@ class HTTPHelper:
             timeout: Optional[int] = None) -> requests.Response:
         effective_timeout = timeout if timeout is not None else self.timeout
         if params:
-                params = urllib.parse.quote(params, safe='/')
+#            params = urllib.parse.quote(params, safe='/')
+            params = urllib.parse.urlencode(params)
 
         response = requests.get(url, headers=headers, params=params, timeout=effective_timeout)
         response.raise_for_status()
@@ -36,6 +37,7 @@ class HTTPHelper:
 
         response = requests.post(url, data=data, json=json, headers=headers, timeout=effective_timeout)
         response.raise_for_status()
+        
         return response
 
     @staticmethod

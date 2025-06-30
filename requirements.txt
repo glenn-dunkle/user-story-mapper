@@ -1,6 +1,7 @@
 # requirements.txt
-requests
-pytest
-sentence-transformers
-scikit-learn
+deprecated
 numpy
+pytest
+requests
+scikit-learn
+sentence-transformers
