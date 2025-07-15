@@ -9,7 +9,8 @@ from src.affinity_grouper import affinity_grouper as aff_grouper
 from src.loggers import err_logger
 
 # Load the configuration when the module is imported
-config_helper.load_config() 
+config_helper.load_config("/app/pyproject.toml")
+# config_helper#.load_aws_credentials(os.path.expanduser("~/.aws/credentials"))
 from src.util.config_helper import CONFIG
 
 errLog = err_logger.ErrLogger()
@@ -21,10 +22,14 @@ errLog.logMessage(f"Configuration loaded: {CONFIG}")
 
 # Connect to the Miro board of interest and pull the board items
 try:
-    miroConn = miro_conn.MiroConnector()
-    miro_data = miroConn.getBoard()
-    print("Successfully connected to Miro board.")
-    print(miro_data[:5])
+    if CONFIG["miro"]["MIRO_ON_TOGGLE"]:
+        print("Attempting to connect to Miro board...")
+        miroConn = miro_conn.MiroConnector()
+        miro_data = miroConn.getBoard()
+        print("Successfully connected to Miro board.")
+        print(miro_data[:5])
+    else:
+        print("Miro toggled off per config")
 except requests.ConnectionError as e:
     print(f"Connection error: {e}")
 except ValueError as e:
@@ -51,7 +56,8 @@ except Exception as e:
 
 #TODO: Figure out how to dump the entire error response body
 try:
-    if affinity_groups:
+    if affinity_groups and CONFIG["jira"]["JIRA_ON_TOGGLE"]:
+        print("Attempting to connect to Jira project...")
         jiraConn = jira_conn.JiraConnector()
         print("Successfully connected to Jira project.")
         jira_epics = jiraConn.postGroupsToJira(affinity_groups)
@@ -61,3 +67,5 @@ except ValueError as e:
     print(f"Value error: {e}")
 except Exception as e:
     print(f"An unexpected error occurred: {e}")
+
+print("Miro Import into Jira Complete")

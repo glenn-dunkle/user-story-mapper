@@ -1,3 +1,4 @@
+[top]
 title = "User Story Mapper Config"
 
 [logging]
@@ -14,13 +15,20 @@ HTTP_RETRIES = 3
 HTTP_BACKOFF_FACTOR = 0.5
 HTTP_TIMEOUT = 10
 
+[aws]
+AWS_REGION = "us-west-2"
+AWS_USM_SECRET = "user-story-mapper-secrets"
+
 [miro]
+MIRO_ON_TOGGLE = true
 MIRO_API_KEY = "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_mZKI-Up3Z1ahlJ0hfTp0CJwxXGM"
 MIRO_BASE_URL = "https://api.miro.com/v2/boards/"
-MIRO_BOARD_ID = "uXjVIj7ivMU="      # "uXjVIlEZNVI="
+MIRO_BOARD_ID = "uXjVIj7ivMU="      #Glenn's larger data set
+# MIRO_BOARD_ID = "uXjVIlEZNVI="    # Glenn simple data set
+# MIRO_BOARD_ID = "uXjVJfM_YaE="    # Chris' shared board
 MIRO_HTTP_ACCEPT = "application/json"
 MIRO_HTTP_CONTENT_TYPE = "application/json"
-MIRO_PAGE_ITEMS = "50"
+MIRO_RESULT_LIMIT = 10      # 10 <= limit <= 50; default = 10
 
 [storiesonboard]
 SOB_API_KEY = ""
@@ -28,8 +36,9 @@ SOB_BASE_URL = ""
 SOB_BOARD_ID = ""
 
 [jira]
+JIRA_ON_TOGGLE = false
 JIRA_USER = "glenn.dunkle@gmail.com"
-JIRA_API_KEY = "ATATT3xFfGF0ozMMfoB5bNqUxIy7EwnrICaYRVb2bH1_a82z4lyll-eMFccshcrfBbpjWmRhxi8fliU4Sv6kb59xA77HC1E6psFNp4KXGLWj4S0nn_AE3dIdgb12sghTyEe4ts2zdM_QhNYq98M18CMvKi6ioMBu48-b8KNg56HhCWlNSz_wWhQ=12E1D66D"
+JIRA_API_KEY = "ATATT3xFfGF04GwAhP0cUNil21XrxUK5yDnBB__M1St2lTD1IXR1s0-8MVqRt9Zq4HGuAr2U1M50Nn1KAmkHSL60NR5j48P6ntBwUmxM9PFc6WjfIeK5MyqEQKSq0EeMvcMZOC5Z26bgA_gymV_ONu-vqaLKX4PCOJ-9NxptpX5BSPDgNAtRZFo=18E1B4E2"
 JIRA_BASE_URL = "https://gdunkle.atlassian.net/rest/api/2"
 JIRA_PROJECT_KEY = "DEMO"
 JIRA_HTTP_CONTENT_TYPE = "application/json"
@@ -38,7 +47,7 @@ JIRA_HTTP_CONTENT_TYPE = "application/json"
 [ai_grouping]
 AI_MODEL_NAME = "all-MiniLM-L6-v2"
 AI_CLUSTERS = 5
-AI_DISTANCE_THRESHOLD = 0.7
+AI_DISTANCE_THRESHOLD = 0.1
 AI_AGGLOMERATIVE_TYPE = "distance"   # Options: distance, cluster
 AI_LINKAGE_TYPE = "average"     # Options: ward, average, complete, single
 AI_METRIC_TYPE = "cosine"      # Options: euclidean, manhattan, cosine, precomputed

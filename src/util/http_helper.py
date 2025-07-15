@@ -1,3 +1,4 @@
+import json
 import requests
 import time
 import urllib.parse
@@ -91,12 +92,12 @@ class HTTPHelper:
             response.raise_for_status()
             data = response.json()
             results.extend(data.get(results_key, []))
-            next_url = data.get(next_key)
+            next_url = data.get("links", {}).get(next_key)
             if not next_url:
                 break
             url = next_url
-            params = None  # Assume next_url is a full URL
-        return results 
+#            params = None  # Assume next_url is a full URL
+        return results
     
     @staticmethod
     def get_paginated_with_cursor(self,
@@ -109,6 +110,7 @@ class HTTPHelper:
         effective_timeout = timeout if timeout is not None else self.timeout
         results = []
         cursor = None
+        print(f"Paginating with cursor: {cursor_key}")
         while True:
             if cursor:
                 params[cursor_key] = cursor
@@ -120,7 +122,9 @@ class HTTPHelper:
             if not cursor:
                 break
             # Reset params to avoid sending the cursor in the next request
-            params = {k: v for k, v in params.items() if k != cursor_key}    
+            params = {k: v for k, v in params.items() if k != cursor_key} 
+
+        return results
 
     @staticmethod
     def get_with_retry(self,
