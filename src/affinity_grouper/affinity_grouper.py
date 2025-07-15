@@ -12,22 +12,13 @@ class AffinityGrouper:
         self.agglomerative_linkage = CONFIG["ai_grouping"]["AI_LINKAGE_TYPE"]
         self.agglomerative_metric = CONFIG["ai_grouping"]["AI_METRIC_TYPE"]
 
-#    def fit(self, texts):
-#        embeddings = self.model.encode(texts, convert_to_tensor=True)
-#        embeddings = embeddings.cpu().numpy()
-        
-#        clustering_model = AgglomerativeClustering(n_clusters=self.n_clusters)
-#        self.labels_ = clustering_model.fit_predict(embeddings)
-
-#    def predict(self, texts):
-#        return self.labels_
-        
     def getAffinityGroups(self,
                       notes,
                       model_name=None,
                       n_clusters=None,
                       n_distance_threshold=None):
         model_name = model_name if model_name else self.model_name
+
         # Determine the type of agglomerative clustering to use, either by distance threshold or number of clusters. Set the other to None.
         if self.agglomerative_type == "distance":
             n_clusters = None

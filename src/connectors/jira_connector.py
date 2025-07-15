@@ -73,6 +73,6 @@ class JiraConnector(HTTPHelper):
             created_epics.append(epic_key)
             for story in stories:
                 story_count += 1
-                summary = f"Cluster {cluster_id} - Story {story_count}"
+                summary = f"{cluster_id}.{story_count}: {story}"
                 self.__postStory(epic_key, summary, story)
         return created_epics
