@@ -77,5 +77,6 @@ class JiraConnector(HTTPHelper):
                 summary = f"{story}"
 #                print(f"└── Story: {summary}")
                 self.__postStory(epic_key, summary, story)
+        
         return created_epics
  

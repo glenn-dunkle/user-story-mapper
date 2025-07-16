@@ -42,7 +42,7 @@ class AffinityGrouper:
         embeddings = model.encode(notes, convert_to_tensor=True)
 #        embeddings = embeddings.cpu().numpy()
         clustering_model = AgglomerativeClustering(n_clusters=n_clusters, distance_threshold=n_distance_threshold, linkage=self.agglomerative_linkage, metric=self.agglomerative_metric, compute_full_tree=True)
-        clustering_model.fit_predict(embeddings)
+        clustering_model.fit(embeddings)
         labels = clustering_model.labels_
         print(clustering_model.labels_)
 
@@ -68,7 +68,7 @@ class AffinityGrouper:
             combined_text = " ".join(cluster_texts)
             
             # Create a prompt for summarization
-            prompt = f"Briefly summarize the main theme of these related items as an actvity in 5-7 words: {combined_text}"
+            prompt = f"Briefly summarize the main theme of these related items as an activity in 5-7 words: {combined_text}"
 
             # Requesting a summary from ChatGPT (using the chat-completion API)
             response = ai.chat.completions.create(

@@ -1,6 +1,9 @@
 # requirements.txt
+boto3
 deprecated
 numpy
+openai
+pandas
 pytest
 requests
 scikit-learn
