@@ -12,12 +12,6 @@ RUN apt-get update && apt-get install -y procps
 RUN apt-get install -y git
 RUN pip install --upgrade pip
 RUN pip install -U debugpy
-RUN pip install boto3
-RUN pip install deprecated
-RUN pip install numpy
-RUN pip install requests
-RUN pip install scikit-learn
-RUN pip install sentence-transformers
 RUN pip install -r requirements.txt
 
 # RUN mkdir /app
