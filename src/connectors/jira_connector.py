@@ -68,11 +68,14 @@ class JiraConnector(HTTPHelper):
 
         for cluster_id, stories in affinity_groups.items():
             story_count = 0
-            epic_response = self.__postEpic(f"Cluster {cluster_id}")
+            epic_response = self.__postEpic(f"{cluster_id}")
+#            print(f"Epic: Activity {cluster_id}")
             epic_key = epic_response.json()["key"]
             created_epics.append(epic_key)
             for story in stories:
-                story_count += 1
-                summary = f"{cluster_id}.{story_count}: {story}"
+                # NOTE : The summary is the story text, but we can modify this to include more context or a summarization of the story text if needed.
+                summary = f"{story}"
+#                print(f"└── Story: {summary}")
                 self.__postStory(epic_key, summary, story)
         return created_epics
+ 

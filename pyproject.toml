@@ -1,4 +1,3 @@
-[top]
 title = "User Story Mapper Config"
 
 [logging]
@@ -36,7 +35,7 @@ SOB_BASE_URL = ""
 SOB_BOARD_ID = ""
 
 [jira]
-JIRA_ON_TOGGLE = false
+JIRA_ON_TOGGLE = true
 JIRA_USER = "glenn.dunkle@gmail.com"
 JIRA_API_KEY = "ATATT3xFfGF04GwAhP0cUNil21XrxUK5yDnBB__M1St2lTD1IXR1s0-8MVqRt9Zq4HGuAr2U1M50Nn1KAmkHSL60NR5j48P6ntBwUmxM9PFc6WjfIeK5MyqEQKSq0EeMvcMZOC5Z26bgA_gymV_ONu-vqaLKX4PCOJ-9NxptpX5BSPDgNAtRZFo=18E1B4E2"
 JIRA_BASE_URL = "https://gdunkle.atlassian.net/rest/api/2"
@@ -47,7 +46,8 @@ JIRA_HTTP_CONTENT_TYPE = "application/json"
 [ai_grouping]
 AI_MODEL_NAME = "all-MiniLM-L6-v2"
 AI_CLUSTERS = 5
-AI_DISTANCE_THRESHOLD = 0.1
+AI_DISTANCE_THRESHOLD = 0.7
 AI_AGGLOMERATIVE_TYPE = "distance"   # Options: distance, cluster
 AI_LINKAGE_TYPE = "average"     # Options: ward, average, complete, single
 AI_METRIC_TYPE = "cosine"      # Options: euclidean, manhattan, cosine, precomputed
+OPEN_AI_API_KEY = "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"

@@ -15,6 +15,8 @@ RUN pip install -U debugpy
 RUN pip install boto3
 RUN pip install deprecated
 RUN pip install numpy
+RUN pip install openai
+RUN pip install pandas
 RUN pip install requests
 RUN pip install scikit-learn
 RUN pip install sentence-transformers
