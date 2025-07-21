@@ -48,4 +48,3 @@ AI_DISTANCE_THRESHOLD = 0.62
 AI_AGGLOMERATIVE_TYPE = "distance"   # Options: distance, cluster
 AI_LINKAGE_TYPE = "average"     # Options: ward, average, complete, single
 AI_METRIC_TYPE = "cosine"      # Options: euclidean, manhattan, cosine, precomputed
-OPEN_AI_API_KEY = "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"
