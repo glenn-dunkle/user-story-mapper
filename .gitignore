@@ -4,3 +4,4 @@
 '.vscode'
 '.dockerignore'
 '*.log'
+logs/user_story_mapper_err.log

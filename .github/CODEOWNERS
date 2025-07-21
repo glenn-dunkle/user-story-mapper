@@ -1,0 +1,21 @@
+# Specify code owners for User Story Mapper
+# Place this file at: .github/CODEOWNERS
+
+# Dev container and VS Code config
+.devcontainer/    @glenn-dunkle
+.vscode/         @glenn-dunkle
+
+# Core source and tests
+src/             @glenn-dunkle
+tests/           @glenn-dunkle
+
+# Docker and Compose files
+Dockerfile       @glenn-dunkle
+docker-compose*.yml  @glenn-dunkle
+
+# Dependency manifests
+requirements.txt @glenn-dunkle
+pyproject.toml   @glenn-dunkle
+
+# Repository root and miscellaneous files
+*                @glenn-dunkle
