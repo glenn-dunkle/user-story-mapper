@@ -20,11 +20,9 @@ AWS_USM_SECRET = "user-story-mapper-secrets"
 
 [miro]
 MIRO_ON_TOGGLE = true
-MIRO_API_KEY = "eyJtaXJvLm9yaWdpbiI6ImV1MDEifQ_mZKI-Up3Z1ahlJ0hfTp0CJwxXGM"
 MIRO_BASE_URL = "https://api.miro.com/v2/boards/"
 MIRO_BOARD_ID = "uXjVIj7ivMU="      #Glenn's larger data set
 # MIRO_BOARD_ID = "uXjVIlEZNVI="    # Glenn simple data set
-# MIRO_BOARD_ID = "uXjVJfM_YaE="    # Chris' shared board
 MIRO_HTTP_ACCEPT = "application/json"
 MIRO_HTTP_CONTENT_TYPE = "application/json"
 MIRO_RESULT_LIMIT = 10      # 10 <= limit <= 50; default = 10
@@ -36,8 +34,8 @@ SOB_BOARD_ID = ""
 
 [jira]
 JIRA_ON_TOGGLE = true
-JIRA_USER = "glenn.dunkle@gmail.com"
-JIRA_API_KEY = "ATATT3xFfGF04GwAhP0cUNil21XrxUK5yDnBB__M1St2lTD1IXR1s0-8MVqRt9Zq4HGuAr2U1M50Nn1KAmkHSL60NR5j48P6ntBwUmxM9PFc6WjfIeK5MyqEQKSq0EeMvcMZOC5Z26bgA_gymV_ONu-vqaLKX4PCOJ-9NxptpX5BSPDgNAtRZFo=18E1B4E2"
+JIRA_USER = ""
+JIRA_API_KEY = ""
 JIRA_BASE_URL = "https://gdunkle.atlassian.net/rest/api/2"
 JIRA_PROJECT_KEY = "DEMO"
 JIRA_HTTP_CONTENT_TYPE = "application/json"
@@ -46,7 +44,7 @@ JIRA_HTTP_CONTENT_TYPE = "application/json"
 [ai_grouping]
 AI_MODEL_NAME = "all-MiniLM-L6-v2"
 AI_CLUSTERS = 5
-AI_DISTANCE_THRESHOLD = 0.7
+AI_DISTANCE_THRESHOLD = 0.62
 AI_AGGLOMERATIVE_TYPE = "distance"   # Options: distance, cluster
 AI_LINKAGE_TYPE = "average"     # Options: ward, average, complete, single
 AI_METRIC_TYPE = "cosine"      # Options: euclidean, manhattan, cosine, precomputed
