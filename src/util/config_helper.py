@@ -36,12 +36,15 @@ def __get_aws_secret():
         raise e
 
     secret = get_secret_value_response['SecretString']
-
+    
+    # Parse the secret string as JSON and update CONFIG
     try:
         secret_dict = json.loads(secret)
         
-        # Directly update CONFIG with secret values
+        # Update CONFIG with the secret values
         for key, value in secret_dict.items():
+            
+            # Add the KVP to CONFIG dictionary
             CONFIG["credentials"][key] = value
             
     except json.JSONDecodeError as e:

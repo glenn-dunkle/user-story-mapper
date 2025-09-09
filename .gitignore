@@ -4,5 +4,3 @@
 '.vscode'
 '.dockerignore'
 *.log
-logs/
-
