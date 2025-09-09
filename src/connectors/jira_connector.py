@@ -7,8 +7,8 @@ class JiraConnector(HTTPHelper):
     def __init__(self):
         self.uuid = str(uuid.uuid4())
         super().__init__(f"jira_conn_{self.uuid}")
-        self.user = CONFIG["jira"]["JIRA_USER"]
-        self.api_key = CONFIG["jira"]["JIRA_API_KEY"]
+        self.user = CONFIG["credentials"]["JIRA_USER"]
+        self.api_key = CONFIG["credentials"]["JIRA_API_KEY"]
         self.base_url = CONFIG["jira"]["JIRA_BASE_URL"]
         self.project_key = CONFIG["jira"]["JIRA_PROJECT_KEY"]
         self.http_content_type = CONFIG["jira"]["JIRA_HTTP_CONTENT_TYPE"]

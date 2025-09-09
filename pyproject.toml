@@ -9,14 +9,35 @@ LOG_OUT_NAME = "user_story_mapper_out"
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
+[credentials]
+JIRA_USER = ""
+JIRA_API_KEY = ""
+MIRO_API_KEY = ""
+OPENAI_API_KEY = ""
+# SOB_API_KEY = ""    # Not used
+
+[aws]
+AWS_REGION = "us-west-2"
+AWS_USM_SECRET = "user-story-mapper-secrets"
+
 [http]
 HTTP_RETRIES = 3
 HTTP_BACKOFF_FACTOR = 0.5
 HTTP_TIMEOUT = 10
 
-[aws]
-AWS_REGION = "us-west-2"
-AWS_USM_SECRET = "user-story-mapper-secrets"
+[ai_grouping]
+AI_MODEL_NAME = "all-MiniLM-L6-v2"
+AI_CLUSTERS = 5
+AI_DISTANCE_THRESHOLD = 0.62
+AI_AGGLOMERATIVE_TYPE = "distance"   # Options: distance, cluster
+AI_LINKAGE_TYPE = "average"     # Options: ward, average, complete, single
+AI_METRIC_TYPE = "cosine"      # Options: euclidean, manhattan, cosine, precomputed
+
+[jira]
+JIRA_ON_TOGGLE = false
+JIRA_BASE_URL = "https://gdunkle.atlassian.net/rest/api/2"
+JIRA_PROJECT_KEY = "DEMO"
+JIRA_HTTP_CONTENT_TYPE = "application/json"
 
 [miro]
 MIRO_ON_TOGGLE = true
@@ -28,23 +49,5 @@ MIRO_HTTP_CONTENT_TYPE = "application/json"
 MIRO_RESULT_LIMIT = 10      # 10 <= limit <= 50; default = 10
 
 [storiesonboard]
-SOB_API_KEY = ""
 SOB_BASE_URL = ""
 SOB_BOARD_ID = ""
-
-[jira]
-JIRA_ON_TOGGLE = true
-JIRA_USER = ""
-JIRA_API_KEY = ""
-JIRA_BASE_URL = "https://gdunkle.atlassian.net/rest/api/2"
-JIRA_PROJECT_KEY = "DEMO"
-JIRA_HTTP_CONTENT_TYPE = "application/json"
-
-
-[ai_grouping]
-AI_MODEL_NAME = "all-MiniLM-L6-v2"
-AI_CLUSTERS = 5
-AI_DISTANCE_THRESHOLD = 0.62
-AI_AGGLOMERATIVE_TYPE = "distance"   # Options: distance, cluster
-AI_LINKAGE_TYPE = "average"     # Options: ward, average, complete, single
-AI_METRIC_TYPE = "cosine"      # Options: euclidean, manhattan, cosine, precomputed
