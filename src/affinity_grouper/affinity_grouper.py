@@ -13,7 +13,7 @@ class AffinityGrouper:
         self.agglomerative_type = CONFIG["ai_grouping"]["AI_AGGLOMERATIVE_TYPE"]
         self.agglomerative_linkage = CONFIG["ai_grouping"]["AI_LINKAGE_TYPE"]
         self.agglomerative_metric = CONFIG["ai_grouping"]["AI_METRIC_TYPE"]
-        self.openai_api_key = CONFIG["ai_grouping"]["OPEN_AI_API_KEY"]
+        self.openai_api_key = CONFIG["credentials"]["OPENAI_API_KEY"]
 
     def __find_centroid_sentence(self, sentences, embeddings):
         cluster_center = np.mean(embeddings, axis=0)

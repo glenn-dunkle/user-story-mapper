@@ -1,4 +1,5 @@
 import os
+import re
 import logging
 from src.util.config_helper import CONFIG
 
@@ -56,18 +57,55 @@ class LoggerHelper:
     def logMessage(self, message=None):
         match self.logger.level: # .getLogLevel(self.logger.handlers[0]):
             case logging.DEBUG:
-                self.logger.debug(message)
+                self.logger.debug(self._obfuscate(message))
             case logging.INFO:
-                self.logger.info(message)
+                self.logger.info(self._obfuscate(message))
             case logging.WARNING:
-                self.logger.warning(message)
+                self.logger.warning(self._obfuscate(message))
             case logging.ERROR:
-                self.logger.error(message)
+                self.logger.error(self._obfuscate(message))
             case logging.CRITICAL:
-                self.logger.critical(message)
+                self.logger.critical(self._obfuscate(message))
             case _:
-                self.logger.info(message)
+                self.logger.info(self._obfuscate(message))
 
+    def _obfuscate(self, message):
+        """Obfuscate sensitive information in the message before logging."""
+        if not isinstance(message, str):
+            return message
+
+        # Common patterns for sensitive data
+        patterns = {
+        # Match API keys in various formats (JSON, dict, string)
+            r'(["\']?(MIRO|JIRA|OPENAI)_API_KEY["\']?\s*[:=]\s*["\']?)([^"\'\s,}\]]+)(["\']?)': r'\1***REDACTED***\4',
+            
+            # Environment variables style keys (more general pattern)
+            r'(["\']?[A-Z_]+(KEY|TOKEN|SECRET|PASSWORD)["\']?\s*[:=]\s*["\']?)([^"\'\s,}\]]+)(["\']?)': r'\1***REDACTED***\4',
+            
+            # API Keys, Tokens, and Auth headers (case insensitive)
+            r'(?i)(["\']?(api[-_]?key|auth[-_]?token|bearer)["\']?\s*[:=]\s*["\']?)([^"\'\s,}\]]+)(["\']?)': r'\1***REDACTED***\4',
+
+            # Passwords
+            r'(password|passwd)["\s:]+([^"\s,}\]]+)': r'\1: ***REDACTED***',
+
+            # Email addresses
+            r'[\w\.-]+@[\w\.-]+': '***EMAIL@REDACTED***',
+
+            # Credit card numbers
+            r'\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b': '***CARD-REDACTED***',
+
+            # AWS keys
+            r'(AKIA|ASIA)[A-Z0-9]{16}': '***AWS-KEY-REDACTED***',
+
+            # Private keys
+            r'-----BEGIN (?:RSA )?PRIVATE KEY-----[^-]+-----END (?:RSA )?PRIVATE KEY-----': '***PRIVATE-KEY-REDACTED***'
+        }
+
+        obfuscated = message
+        for pattern, replacement in patterns.items():
+            obfuscated = re.sub(pattern, replacement, obfuscated, flags=re.IGNORECASE)
+        
+        return obfuscated
 # Example usage:
 # logger = Logger("my_logger").get_logger()
 # logger.info("This is an info message.")

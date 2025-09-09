@@ -9,7 +9,7 @@ class MiroConnector(HTTPHelper):
         # Load configuration values from the config file
         self.uuid = str(uuid.uuid4())
         super().__init__(f"miro_{self.uuid}")
-        self.api_key = CONFIG["miro"]["MIRO_API_KEY"]
+        self.api_key = CONFIG["credentials"]["MIRO_API_KEY"]
         self.base_url = CONFIG["miro"]["MIRO_BASE_URL"]
         self.board_id = CONFIG["miro"]["MIRO_BOARD_ID"]
         self.http_accept = CONFIG["miro"]["MIRO_HTTP_ACCEPT"]

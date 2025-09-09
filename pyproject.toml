@@ -9,10 +9,28 @@ LOG_OUT_NAME = "user_story_mapper_out"
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 LOG_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
+[credentials]
+JIRA_USER = ""
+JIRA_API_KEY = ""
+MIRO_API_KEY = ""
+OPENAI_API_KEY = ""
+# SOB_API_KEY = ""    # Not used
+
+[aws]
+AWS_REGION = "us-west-2"
+AWS_USM_SECRET = "user-story-mapper-secrets"
+
 [http]
 HTTP_RETRIES = 3
 HTTP_BACKOFF_FACTOR = 0.5
 HTTP_TIMEOUT = 10
+
+[credentials]
+# These values should be set in AWS Secrets Manager and not hardcoded here
+# JIRA_USER = ""
+# JIRA_API_KEY = ""
+# MIRO_API_KEY = ""
+# OPENAI_API_KEY = ""
 
 [aws]
 AWS_REGION = "us-west-2"
@@ -28,14 +46,11 @@ MIRO_HTTP_CONTENT_TYPE = "application/json"
 MIRO_RESULT_LIMIT = 10      # 10 <= limit <= 50; default = 10
 
 [storiesonboard]
-SOB_API_KEY = ""
 SOB_BASE_URL = ""
 SOB_BOARD_ID = ""
 
 [jira]
 JIRA_ON_TOGGLE = true
-JIRA_USER = ""
-JIRA_API_KEY = ""
 JIRA_BASE_URL = "https://gdunkle.atlassian.net/rest/api/2"
 JIRA_PROJECT_KEY = "DEMO"
 JIRA_HTTP_CONTENT_TYPE = "application/json"
