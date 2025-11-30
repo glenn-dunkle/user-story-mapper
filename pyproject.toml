@@ -32,10 +32,6 @@ HTTP_TIMEOUT = 10
 # MIRO_API_KEY = ""
 # OPENAI_API_KEY = ""
 
-[aws]
-AWS_REGION = "us-west-2"
-AWS_USM_SECRET = "user-story-mapper-secrets"
-
 [miro]
 MIRO_ON_TOGGLE = true
 MIRO_BASE_URL = "https://api.miro.com/v2/boards/"

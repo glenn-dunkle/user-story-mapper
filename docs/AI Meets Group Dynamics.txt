@@ -1,0 +1,25 @@
+﻿1. Project Overview 
+- Briefly describe your project 
+
+2. Purpose and Goals 
+- What motivated you to start this project? 
+- What are the key goals or questions you’re trying to answer? 
+
+3. Connection to Group Dynamics 
+- How does your project relate to group dynamics, for example: communication, leadership, decision-making, or conflict resolution? 
+
+4. Technology Involved 
+-What kind(s) of AI or technology are you using (e.g., natural language processing, sentiment analysis, meeting transcription tools)? How does the technology “fit” into the group setting? 
+
+5. Insights or Findings So Far 
+What have you discovered or noticed about how people interact when AI tools are part of meetings? Have there been any surprising outcomes? 
+
+6. Ethical or Social Considerations 
+What challenges or ethical questions have come up, for example: privacy, bias, or overreliance on AI? 
+
+7. Future Directions 
+- What’s next for your project? 
+- Are there any specific improvements, experiments, or collaborations you’re hoping to pursue?
+
+8. Reflection 
+- In your opinion, what role should AI play in supporting healthy, productive group interactions?
